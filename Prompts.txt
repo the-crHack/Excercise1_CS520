@@ -1,0 +1,28 @@
+1. Chain-of-Thought (CoT)
+
+Prompt:
+{####problem statement}
+Lemme thought process you this step by step:
+Firstly you will understand what the functions should do
+Then, you will analyze the expected inputs and outputs
+Next, you will think of how to approach this problem
+Finally, you will implement the solution
+
+
+2. Stepwise Chain-of-Thought (SCOT)
+
+Prompt:
+{####problem statement}
+Let's solve this using a systematic and proper stepwise approach:
+Step 1: Problem Analysis: Understand what the function needs to do and know the
+inputs and expected outputs. Determine the main requirements.
+Step 2: Algorithm Design: Choose the most appropriate approach or algorithm, take
+computational complexity under consideration (should be optimal), and plan the main
+logic flow.
+Step 3: Edge Case Consideration: Identify potential edge cases (like empty inputs,
+single elements.) and design how to handle special scenarios. Consider input
+validation as needed.
+Step 4: Implementation: Write the function step by step, implement the core logic, and
+handle the edge cases so that you don’t fail on unseen test data.
+Step 5: Verification: After writing the solution, review for correctness and check if it
+fulfills all the requirements. Now I'll implement the function.
