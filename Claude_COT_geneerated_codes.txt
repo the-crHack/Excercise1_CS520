@@ -1,0 +1,491 @@
+problem1_solutions = [
+    """def position_max(lst):
+    \"\"\"Find all indices where the maximum value occurs.\"\"\"
+    if not lst:
+        return []
+    max_val = max(lst)
+    return [i for i, val in enumerate(lst) if val == max_val]""",
+
+    """def position_max(lst):
+    if not lst:
+        return []
+    max_val = max(lst)
+    return [i for i, val in enumerate(lst) if val == max_val]""",
+
+    """def position_max(lst):
+    \"\"\"Find all index positions of the maximum values in a given list.\"\"\"
+    if not lst:
+        return []
+    max_val = max(lst)
+    return [i for i, val in enumerate(lst) if val == max_val]""",
+
+    """def position_max(lst):
+    if not lst:
+        return []
+    max_val = max(lst)
+    return [i for i, val in enumerate(lst) if val == max_val]""",
+
+    """def position_max(lst):
+    if not lst:
+        return []
+    max_val = max(lst)
+    return [i for i, val in enumerate(lst) if val == max_val]""",
+
+    """def position_max(lst):
+    if not lst:
+        return []
+    max_val = max(lst)
+    return [i for i, val in enumerate(lst) if val == max_val]""",
+
+    """def position_max(lst):
+    \"\"\"Find all index positions of the maximum values in a given list.\"\"\"
+    if not lst:
+        return []
+    max_val = max(lst)
+    return [i for i, val in enumerate(lst) if val == max_val]""",
+]
+
+problem2_solutions = [
+    """def find_Diff(arr):
+    \"\"\"Find the difference between highest and lowest frequency in array.\"\"\"
+    if not arr:
+        return 0
+    
+    freq = {}
+    for num in arr:
+        freq[num] = freq.get(num, 0) + 1
+    
+    frequencies = list(freq.values())
+    return max(frequencies) - min(frequencies)""",
+
+    """def find_Diff(arr):
+    if not arr:
+        return 0
+    freq = {}
+    for num in arr:
+        freq[num] = freq.get(num, 0) + 1
+    
+    frequencies = list(freq.values())
+    return max(frequencies) - min(frequencies)""",
+
+    """def find_Diff(arr):
+    \"\"\"Find the difference between highest and least frequencies in a given array.\"\"\"
+    if not arr:
+        return 0
+    
+    freq = {}
+    for num in arr:
+        freq[num] = freq.get(num, 0) + 1
+    
+    frequencies = list(freq.values())
+    return max(frequencies) - min(frequencies)""",
+
+    """def find_Diff(arr):
+    if not arr:
+        return 0
+    freq = {}
+    for num in arr:
+        freq[num] = freq.get(num, 0) + 1
+    frequencies = list(freq.values())
+    return max(frequencies) - min(frequencies)""",
+
+    """def find_Diff(arr):
+    \"\"\"Find the difference between highest and least frequencies in a given array.\"\"\"
+    if not arr:
+        return 0
+    
+    freq = {}
+    for num in arr:
+        freq[num] = freq.get(num, 0) + 1
+    
+    frequencies = list(freq.values())
+    return max(frequencies) - min(frequencies)""",
+]
+
+problem3_solutions = [
+    """def is_valid_parenthese(s):
+    \"\"\"Check if a string of parentheses is valid.\"\"\"
+    stack = []
+    matching = {'(': ')', '[': ']', '{': '}'}
+    
+    for char in s:
+        if char in matching:
+            stack.append(char)
+        elif char in matching.values():
+            if not stack:
+                return False
+            if matching[stack.pop()] != char:
+                return False
+    
+    return len(stack) == 0""",
+
+    """def is_valid_parenthese(s):
+    stack = []
+    matching = {'(': ')', '{': '}', '[': ']'}
+    
+    for char in s:
+        if char in matching:
+            stack.append(char)
+        elif char in matching.values():
+            if not stack:
+                return False
+            if matching[stack.pop()] != char:
+                return False
+    
+    return len(stack) == 0""",
+
+    """def is_valid_parenthese(s):
+    \"\"\"Verify validity of a string of parentheses.\"\"\"
+    stack = []
+    matching = {'(': ')', '[': ']', '{': '}'}
+    
+    for char in s:
+        if char in matching:
+            stack.append(char)
+        elif char in matching.values():
+            if not stack:
+                return False
+            if matching[stack.pop()] != char:
+                return False
+    
+    return len(stack) == 0""",
+
+    """def is_valid_parenthese(s):
+    stack = []
+    matching = {'(': ')', '[': ']', '{': '}'}
+    
+    for char in s:
+        if char in matching:
+            stack.append(char)
+        elif char in matching.values():
+            if not stack or matching[stack.pop()] != char:
+                return False
+    
+    return len(stack) == 0""",
+
+    """def is_valid_parenthese(s):
+    \"\"\"Verify validity of a string of parentheses.\"\"\"
+    stack = []
+    pairs = {'(': ')', '{': '}', '[': ']'}
+    
+    for char in s:
+        if char in pairs:
+            stack.append(char)
+        elif char in pairs.values():
+            if not stack or pairs[stack.pop()] != char:
+                return False
+    
+    return len(stack) == 0""",
+]
+
+problem4_solutions = [
+    """def find_peak(arr):
+    \"\"\"Find a peak element in the array (element greater than its neighbors).\"\"\"
+    n = len(arr)
+    
+    if n == 0:
+        return None
+    if n == 1:
+        return arr[0]
+    
+    # Check first element
+    if arr[0] >= arr[1]:
+        return arr[0]
+    
+    # Check last element
+    if arr[n-1] >= arr[n-2]:
+        return arr[n-1]
+    
+    # Check middle elements
+    for i in range(1, n-1):
+        if arr[i] >= arr[i-1] and arr[i] >= arr[i+1]:
+            return arr[i]
+    
+    return None""",
+
+    """def find_peak(arr):
+    n = len(arr)
+    if n == 0:
+        return None
+    if n == 1:
+        return arr[0]
+    
+    # Check first element
+    if arr[0] >= arr[1]:
+        return arr[0]
+    
+    # Check last element
+    if arr[n-1] >= arr[n-2]:
+        return arr[n-1]
+    
+    # Check middle elements
+    for i in range(1, n-1):
+        if arr[i] >= arr[i-1] and arr[i] >= arr[i+1]:
+            return arr[i]
+    
+    return None""",
+
+    """def find_peak(arr):
+    \"\"\"Find the peak element in the given array.\"\"\"
+    n = len(arr)
+    
+    if n == 0:
+        return None
+    if n == 1:
+        return arr[0]
+    
+    # Check first element
+    if arr[0] >= arr[1]:
+        return arr[0]
+    
+    # Check middle elements
+    for i in range(1, n - 1):
+        if arr[i] >= arr[i - 1] and arr[i] >= arr[i + 1]:
+            return arr[i]
+    
+    # Check last element
+    if arr[n - 1] >= arr[n - 2]:
+        return arr[n - 1]
+    
+    return None""",
+
+    """def find_peak(arr):
+    \"\"\"Find the peak element in the given array.\"\"\"
+    n = len(arr)
+    
+    if n == 0:
+        return None
+    if n == 1:
+        return arr[0]
+    
+    # Check first element
+    if arr[0] >= arr[1]:
+        return arr[0]
+    
+    # Check last element
+    if arr[n-1] >= arr[n-2]:
+        return arr[n-1]
+    
+    # Check middle elements
+    for i in range(1, n-1):
+        if arr[i] >= arr[i-1] and arr[i] >= arr[i+1]:
+            return arr[i]
+    
+    return None""",
+]
+
+problem5_solutions = [
+    """def bell_number(n):
+    \"\"\"Calculate the nth Bell number.\"\"\"
+    if n == 0:
+        return 1
+    
+    # Create Bell triangle
+    bell = [[0 for i in range(n+1)] for j in range(n+1)]
+    bell[0][0] = 1
+    
+    for i in range(1, n+1):
+        # First element in each row is same as last element of previous row
+        bell[i][0] = bell[i-1][i-1]
+        
+        for j in range(1, i+1):
+            bell[i][j] = bell[i-1][j-1] + bell[i][j-1]
+    
+    return bell[n][0]""",
+
+    """def bell_number(n):
+    if n == 0:
+        return 1
+    
+    # Create bell triangle
+    bell = [[0 for i in range(n+1)] for j in range(n+1)]
+    bell[0][0] = 1
+    
+    for i in range(1, n+1):
+        # First element in each row is same as last element of previous row
+        bell[i][0] = bell[i-1][i-1]
+        
+        for j in range(1, i+1):
+            bell[i][j] = bell[i-1][j-1] + bell[i][j-1]
+    
+    return bell[n][0]""",
+
+    """def bell_number(n):
+    \"\"\"Find the number of ways to partition a set of Bell numbers.\"\"\"
+    if n == 0:
+        return 1
+    
+    # Create a 2D array to store Bell Triangle
+    bell = [[0 for i in range(n+1)] for j in range(n+1)]
+    bell[0][0] = 1
+    
+    for i in range(1, n+1):
+        # First element in each row is same as last element in previous row
+        bell[i][0] = bell[i-1][i-1]
+        
+        for j in range(1, i+1):
+            bell[i][j] = bell[i-1][j-1] + bell[i][j-1]
+    
+    return bell[n][0]""",
+
+    """def bell_number(n):
+    \"\"\"Find the nth Bell number.\"\"\"
+    if n == 0:
+        return 1
+    
+    # Create a 2D array to store Bell Triangle
+    bell = [[0 for i in range(n+1)] for j in range(n+1)]
+    bell[0][0] = 1
+    
+    for i in range(1, n+1):
+        # First element in each row is same as last element in previous row
+        bell[i][0] = bell[i-1][i-1]
+        
+        for j in range(1, i+1):
+            bell[i][j] = bell[i-1][j-1] + bell[i][j-1]
+    
+    return bell[n][0]""",
+]
+
+problem6_solutions = [
+    """def filter_oddnumbers(lst):
+    \"\"\"Filter odd numbers from a list using lambda function.\"\"\"
+    return list(filter(lambda x: x % 2 != 0, lst))""",
+
+    """def filter_oddnumbers(lst):
+    return list(filter(lambda x: x % 2 != 0, lst))""",
+
+    """def filter_oddnumbers(lst):
+    \"\"\"Filter odd numbers using lambda function.\"\"\"
+    return list(filter(lambda x: x % 2 != 0, lst))""",
+
+    """def filter_oddnumbers(nums):
+    \"\"\"Filter odd numbers using lambda function.\"\"\"
+    return list(filter(lambda x: x % 2 != 0, nums))""",
+]
+
+problem7_solutions = [
+    """def bitwise_xor(tup1, tup2):
+    \"\"\"Perform bitwise XOR operation across corresponding elements of tuples.\"\"\"
+    return tuple(map(lambda x, y: x ^ y, tup1, tup2))""",
+
+    """def bitwise_xor(tup1, tup2):
+    return tuple(a ^ b for a, b in zip(tup1, tup2))""",
+
+    """def bitwise_xor(tup1, tup2):
+    \"\"\"Perform the mathematical bitwise XOR operation across the given tuples.\"\"\"
+    return tuple(a ^ b for a, b in zip(tup1, tup2))""",
+]
+
+problem8_solutions = [
+    """def count_Squares(m, n):
+    \"\"\"Count the number of squares in an m x n rectangle.\"\"\"
+    count = 0
+    for i in range(1, min(m, n) + 1):
+        count += (m - i + 1) * (n - i + 1)
+    return count""",
+
+    """def count_Squares(m, n):
+    # For an m x n rectangle, count all possible squares
+    count = 0
+    for i in range(1, min(m, n) + 1):
+        count += (m - i + 1) * (n - i + 1)
+    return count""",
+
+    """def count_Squares(m, n):
+    \"\"\"Count the number of squares in a rectangle of size m x n.\"\"\"
+    # Formula: Sum of k^2 where k goes from 1 to min(m, n)
+    # For each k x k square size, there are (m - k + 1) * (n - k + 1) such squares
+    count = 0
+    min_dim = min(m, n)
+    
+    for k in range(1, min_dim + 1):
+        count += (m - k + 1) * (n - k + 1)
+    
+    return count""",
+
+    """def count_Squares(m, n):
+    \"\"\"Count the number of squares in an m x n rectangle.\"\"\"
+    if m == 0 or n == 0:
+        return 0
+    
+    count = 0
+    for i in range(1, min(m, n) + 1):
+        count += (m - i + 1) * (n - i + 1)
+    
+    return count""",
+]
+
+problem9_solutions = [
+    """def sub_list(lst1, lst2):
+    \"\"\"Subtract corresponding elements of two lists using map and lambda.\"\"\"
+    return list(map(lambda x, y: x - y, lst1, lst2))""",
+
+    """def sub_list(lst1, lst2):
+    return list(map(lambda x, y: x - y, lst1, lst2))""",
+
+    """def sub_list(lst1, lst2):
+    \"\"\"Subtract two lists using map and lambda function.\"\"\"
+    return list(map(lambda x, y: x - y, lst1, lst2))""",
+]
+
+problem10_solutions = [
+    """def month_season(month, day):
+    \"\"\"Return the season for a given month and day.\"\"\"
+    month = month.lower()
+    
+    if month in ['december', 'january', 'february']:
+        if month == 'december' and day < 21:
+            return 'autumn'
+        elif month == 'february' and day >= 20:
+            return 'spring'
+        return 'winter'
+    elif month in ['march', 'april', 'may']:
+        if month == 'march' and day < 20:
+            return 'winter'
+        elif month == 'may' and day >= 21:
+            return 'summer'
+        return 'spring'
+    elif month in ['june', 'july', 'august']:
+        if month == 'june' and day < 21:
+            return 'spring'
+        elif month == 'august' and day >= 23:
+            return 'autumn'
+        return 'summer'
+    elif month in ['september', 'october', 'november']:
+        if month == 'september' and day < 23:
+            return 'summer'
+        elif month == 'november' and day >= 22:
+            return 'winter'
+        else:
+            return 'autumn'
+    else:
+        return 'Invalid month'""",
+
+    """def month_season(month, day):
+    month = month.lower()
+    
+    # Spring: March 20 - June 20
+    # Summer: June 21 - September 21
+    # Autumn/Fall: September 22 - December 20
+    # Winter: December 21 - March 19
+    
+    if month == 'march':
+        return 'spring' if day >= 20 else 'winter'
+    elif month == 'april' or month == 'may':
+        return 'spring'
+    elif month == 'june':
+        return 'spring' if day <= 20 else 'summer'
+    elif month == 'july' or month == 'august':
+        return 'summer'
+    elif month == 'september':
+        return 'summer' if day <= 21 else 'autumn'
+    elif month == 'october' or month == 'november':
+        return 'autumn'
+    elif month == 'december':
+        return 'autumn' if day <= 20 else 'winter'
+    elif month == 'january' or month == 'february':
+        return 'winter'
+    else:
+        return 'unknown'""",
+]
