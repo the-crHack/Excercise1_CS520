@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Coverage Reports</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        h1 { color: #333; }
+        .info { color: #666; margin-bottom: 30px; }
+        table { border-collapse: collapse; width: 100%; margin-top: 20px; }
+        th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        a { color: #0066cc; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid #ddd; color: #666; font-size: 0.9em; }
+    </style>
+</head>
+<body>
+    <h1>Coverage Reports</h1>
+    <div class="info">
+        <p><strong>Generated:</strong> 2025-11-10 16:57:14</p>
+        <p><strong>Project:</strong> LLM Code Generation Analysis</p>
+    </div>
+    
+    <table>
+        <tr>
+            <th>Variant</th>
+            <th>Description</th>
+            <th>HTML Report</th>
+            <th>XML Report</th>
+        </tr>
+        <tr>
+            <td><strong>QWEN_COT</strong></td>
+            <td>QWEN with Chain of Thought</td>
+            <td><a href="html/qwen_cot/index.html">View HTML</a></td>
+            <td><a href="xml/coverage_qwen_cot.xml">Download XML</a></td>
+        </tr>
+        <tr>
+            <td><strong>QWEN_SCOT</strong></td>
+            <td>QWEN with Step-wise COT</td>
+            <td><a href="html/qwen_scot/index.html">View HTML</a></td>
+            <td><a href="xml/coverage_qwen_scot.xml">Download XML</a></td>
+        </tr>
+        <tr>
+            <td><strong>CLAUDE_COT</strong></td>
+            <td>Claude with Chain of Thought</td>
+            <td><a href="html/claude_cot/index.html">View HTML</a></td>
+            <td><a href="xml/coverage_claude_cot.xml">Download XML</a></td>
+        </tr>
+        <tr>
+            <td><strong>CLAUDE_SCOT</strong></td>
+            <td>Claude with Step-wise COT</td>
+            <td><a href="html/claude_scot/index.html">View HTML</a></td>
+            <td><a href="xml/coverage_claude_scot.xml">Download XML</a></td>
+        </tr>
+    </table>
+    
+    <div class="footer">
+        <p><strong>Regenerate reports:</strong> python generate_all_coverage_reports.py</p>
+        <p><strong>Quick analysis:</strong> python analyze_coverage.py Solutions/VARIANT/TestCases Solutions/VARIANT</p>
+    </div>
+</body>
+</html>
