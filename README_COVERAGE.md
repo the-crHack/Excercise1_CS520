@@ -59,5 +59,16 @@ open coverage_reports/html/qwen_scot/index.html
 # Quick terminal analysis
 python analyze_coverage.py Solutions/QWEN_SCOT/TestCases Solutions/QWEN_SCOT
 
-```
+```<img width="1470" height="956" alt="Screenshot 2025-11-10 at 7 52 53 PM" src="https://github.com/user-attachments/assets/3634a71c-cbdf-4e39-8336-5541cba79c64" />
+
+<img width="1470" height="956" alt="Screenshot 2025-11-10 at 7 53 03 PM" src="https://github.com/user-attachments/assets/4d2e5127-71bd-4b73-b2ed-b67f81c752d3" />
+
+<img width="1470" height="956" alt="Screenshot 2025-11-10 at 7 53 07 PM" src="https://github.com/user-attachments/assets/fd949863-0dc2-437e-a6ed-c44a231be19d" />
+
+
+<img width="1470" height="956" alt="Screenshot 2025-11-10 at 7 53 18 PM" src="https://github.com/user-attachments/assets/5a0c22d9-fc6f-44a6-9e58-7c1d6bd1d977" />
+
+
+
+
 
