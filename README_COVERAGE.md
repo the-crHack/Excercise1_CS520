@@ -75,7 +75,7 @@ open coverage_reports/html/qwen_scot/index.html
 python analyze_coverage.py Solutions/QWEN_SCOT/TestCases Solutions/QWEN_SCOT
 ```
 
-## Generate Before/After Comparison (Assignment 2)
+## Generate Before/After Comparison (Assignment 3)
 
 To create the coverage comparison page showing improvements from spec-guided tests:
 
@@ -118,14 +118,6 @@ python -m pytest Solutions/QWEN_SCOT/TestCases/test_bell_number.py \
 ```bash
 open coverage_comparison/index.html
 ```
-
-### What the comparison shows:
-
-- **Side-by-side comparison** of before/after coverage
-- **Detailed metrics** for month_season and bell_number
-- **Missing lines** identified in original tests
-- **Improvements achieved** with spec-guided tests
-- **Direct links** to detailed HTML reports
 
 ### Results:
 
