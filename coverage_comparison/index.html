@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Coverage Comparison - Before & After</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            padding: 20px; 
+            background: #f0f2f5; 
+            line-height: 1.6;
+        }
+        
+        .header { 
+            background: linear-gradient(135deg, #4CAF50 0%, #2196F3 100%); 
+            color: white; 
+            padding: 40px; 
+            border-radius: 10px; 
+            margin-bottom: 30px; 
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .header h1 { margin-bottom: 10px; font-size: 2em; }
+        .header p { opacity: 0.95; font-size: 1.1em; }
+        
+        .container { max-width: 1400px; margin: 0 auto; }
+        
+        .summary-section { 
+            background: white; 
+            padding: 30px; 
+            border-radius: 10px; 
+            margin-bottom: 30px; 
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .summary-section h2 { 
+            color: #2c3e50; 
+            margin-bottom: 20px; 
+            padding-bottom: 10px; 
+            border-bottom: 3px solid #4CAF50;
+            font-size: 1.5em;
+        }
+        
+        .summary-table { 
+            width: 100%; 
+            border-collapse: collapse; 
+            margin: 20px 0;
+            background: white;
+        }
+        .summary-table th { 
+            background: #4CAF50; 
+            color: white; 
+            padding: 15px; 
+            text-align: left;
+            font-weight: 600;
+        }
+        .summary-table td { 
+            padding: 12px 15px; 
+            border: 1px solid #e0e0e0;
+        }
+        .summary-table tr:nth-child(even) { background: #f9f9f9; }
+        .summary-table tr:hover { background: #f0f7ff; }
+        
+        .highlight { 
+            background: #e8f5e9 !important; 
+            font-weight: bold; 
+            color: #2e7d32;
+        }
+        
+        .problem-grid { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 20px; 
+            margin-bottom: 30px;
+        }
+        
+        .problem-card { 
+            background: white; 
+            padding: 25px; 
+            border-radius: 10px; 
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .problem-card h3 { 
+            color: #2c3e50; 
+            margin-bottom: 20px; 
+            font-size: 1.3em;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+        
+        .before-card { border-left: 4px solid #ff9800; }
+        .after-card { border-left: 4px solid #4CAF50; }
+        
+        .metric-box { 
+            background: #f8f9fa; 
+            padding: 15px; 
+            margin: 10px 0; 
+            border-radius: 5px;
+            border-left: 3px solid #2196F3;
+        }
+        
+        .metric-row { 
+            display: flex; 
+            justify-content: space-between; 
+            padding: 8px 0;
+        }
+        
+        .metric-label { 
+            font-weight: 600; 
+            color: #555;
+        }
+        
+        .metric-value { 
+            font-family: 'Courier New', monospace; 
+            font-weight: bold;
+        }
+        
+        .value-good { color: #4CAF50; }
+        .value-bad { color: #f44336; }
+        .value-neutral { color: #2196F3; }
+        
+        .missing-box { 
+            background: #fff3e0; 
+            border: 2px solid #ff9800; 
+            padding: 15px; 
+            border-radius: 5px; 
+            margin-top: 15px;
+        }
+        
+        .missing-box h4 { 
+            color: #e65100; 
+            margin-bottom: 10px;
+            font-size: 1em;
+        }
+        
+        .missing-box ul { 
+            margin-left: 20px; 
+            color: #e65100;
+        }
+        
+        .improvement-box { 
+            background: #e8f5e9; 
+            border: 2px solid #4CAF50; 
+            padding: 15px; 
+            border-radius: 5px; 
+            margin-top: 15px;
+        }
+        
+        .improvement-box h4 { 
+            color: #2e7d32; 
+            margin-bottom: 10px;
+            font-size: 1em;
+        }
+        
+        .improvement-box ul { 
+            margin-left: 20px; 
+            color: #2e7d32;
+        }
+        
+        .btn { 
+            display: inline-block; 
+            padding: 12px 24px; 
+            background: #2196F3; 
+            color: white; 
+            text-decoration: none; 
+            border-radius: 5px; 
+            margin: 10px 10px 0 0;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+        
+        .btn:hover { 
+            background: #1976D2; 
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        .insights-box { 
+            background: #e3f2fd; 
+            padding: 25px; 
+            border-radius: 10px; 
+            border-left: 4px solid #2196F3; 
+            margin-top: 30px;
+        }
+        
+        .insights-box h3 { 
+            color: #1565C0; 
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+        
+        .insights-box ul { 
+            margin-left: 20px; 
+            line-height: 1.8;
+            color: #1565C0;
+        }
+        
+        .footer { 
+            text-align: center; 
+            margin-top: 40px; 
+            padding-top: 20px; 
+            border-top: 2px solid #e0e0e0; 
+            color: #666;
+        }
+        
+        .badge { 
+            display: inline-block; 
+            padding: 4px 12px; 
+            border-radius: 12px; 
+            font-size: 0.85em; 
+            font-weight: bold;
+            margin-left: 10px;
+        }
+        
+        .badge-success { background: #4CAF50; color: white; }
+        .badge-warning { background: #ff9800; color: white; }
+        .badge-info { background: #2196F3; color: white; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Coverage Comparison Report</h1>
+            <p>Assignment 2: Specification-Guided Test Improvement</p>
+            <p>QWEN_SCOT Variant - Before & After Analysis</p>
+        </div>
+
+        <!-- Overall Summary -->
+        <div class="summary-section">
+            <h2>Overall Summary</h2>
+            <table class="summary-table">
+                <thead>
+                    <tr>
+                        <th>Problem</th>
+                        <th>Metric</th>
+                        <th>Before</th>
+                        <th>After</th>
+                        <th>Improvement</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td rowspan="4"><strong>month_season</strong></td>
+                        <td>Statement Coverage</td>
+                        <td>80% (15/18)</td>
+                        <td class="highlight">100% (18/18)</td>
+                        <td class="highlight">+20%</td>
+                    </tr>
+                    <tr>
+                        <td>Branch Coverage</td>
+                        <td>75% (9/12)</td>
+                        <td class="highlight">100% (12/12)</td>
+                        <td class="highlight">+25%</td>
+                    </tr>
+                    <tr>
+                        <td>Tests</td>
+                        <td>102</td>
+                        <td>122 (102 + 20)</td>
+                        <td>+20 spec-guided</td>
+                    </tr>
+                    <tr>
+                        <td>Missing Lines</td>
+                        <td>3 lines</td>
+                        <td class="highlight">0 lines</td>
+                        <td class="highlight">All covered</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="4"><strong>bell_number</strong></td>
+                        <td>Statement Coverage</td>
+                        <td>83% (12/14)</td>
+                        <td class="highlight">100% (14/14)</td>
+                        <td class="highlight">+17%</td>
+                    </tr>
+                    <tr>
+                        <td>Branch Coverage</td>
+                        <td>80% (8/10)</td>
+                        <td class="highlight">100% (10/10)</td>
+                        <td class="highlight">+20%</td>
+                    </tr>
+                    <tr>
+                        <td>Tests</td>
+                        <td>102</td>
+                        <td>112 (102 + 10)</td>
+                        <td>+10 spec-guided</td>
+                    </tr>
+                    <tr>
+                        <td>Missing Lines</td>
+                        <td>2 lines</td>
+                        <td class="highlight">0 lines</td>
+                        <td class="highlight">All covered</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- month_season Comparison -->
+        <div class="summary-section">
+            <h2>Problem 1: month_season <span class="badge badge-success">100% Coverage</span></h2>
+            
+            <div class="problem-grid">
+                <div class="problem-card before-card">
+                    <h3>BEFORE (Original Tests)</h3>
+                    
+                    <div class="metric-box">
+                        <div class="metric-row">
+                            <span class="metric-label">Tests:</span>
+                            <span class="metric-value value-neutral">102 tests</span>
+                        </div>
+                        <div class="metric-row">
+                            <span class="metric-label">Statement Coverage:</span>
+                            <span class="metric-value value-bad">80% (15/18)</span>
+                        </div>
+                        <div class="metric-row">
+                            <span class="metric-label">Branch Coverage:</span>
+                            <span class="metric-value value-bad">75% (9/12)</span>
+                        </div>
+                        <div class="metric-row">
+                            <span class="metric-label">Tests Passed:</span>
+                            <span class="metric-value value-good">102/102</span>
+                        </div>
+                    </div>
+                    
+                    <div class="missing-box">
+                        <h4>Missing Coverage</h4>
+                        <ul>
+                            <li>Line 4: Invalid month handling</li>
+                            <li>Line 26: Invalid day handling</li>
+                            <li>Line 34: Edge case in season logic</li>
+                        </ul>
+                    </div>
+                    
+                    <a href="month_season_before/index.html" class="btn" target="_blank">View Detailed Report</a>
+                </div>
+                
+                <div class="problem-card after-card">
+                    <h3>AFTER (With Spec-Guided Tests)</h3>
+                    
+                    <div class="metric-box">
+                        <div class="metric-row">
+                            <span class="metric-label">Tests:</span>
+                            <span class="metric-value value-neutral">122 tests (102 + 20 spec-guided)</span>
+                        </div>
+                        <div class="metric-row">
+                            <span class="metric-label">Statement Coverage:</span>
+                            <span class="metric-value value-good">100% (18/18)</span>
+                        </div>
+                        <div class="metric-row">
+                            <span class="metric-label">Branch Coverage:</span>
+                            <span class="metric-value value-good">100% (12/12)</span>
+                        </div>
+                        <div class="metric-row">
+                            <span class="metric-label">Tests Passed:</span>
+                            <span class="metric-value value-good">122/122</span>
+                        </div>
+                    </div>
+                    
+                    <div class="improvement-box">
+                        <h4>Improvements Achieved</h4>
+                        <ul>
+                            <li>+20% statement coverage</li>
+                            <li>+25% branch coverage</li>
+                            <li>All missing lines now covered</li>
+                            <li>Season boundary transitions tested</li>
+                            <li>Invalid input handling verified</li>
+                            <li>Edge cases covered</li>
+                        </ul>
+                    </div>
+                    
+                    <a href="month_season_after/index.html" class="btn" target="_blank">View Detailed Report</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- bell_number Comparison -->
+        <div class="summary-section">
+            <h2>Problem 2: bell_number <span class="badge badge-success">100% Coverage</span></h2>
+            
+            <div class="problem-grid">
+                <div class="problem-card before-card">
+                    <h3>BEFORE (Original Tests)</h3>
+                    
+                    <div class="metric-box">
+                        <div class="metric-row">
+                            <span class="metric-label">Tests:</span>
+                            <span class="metric-value value-neutral">102 tests</span>
+                        </div>
+                        <div class="metric-row">
+                            <span class="metric-label">Statement Coverage:</span>
+                            <span class="metric-value value-bad">83% (12/14)</span>
+                        </div>
+                        <div class="metric-row">
+                            <span class="metric-label">Branch Coverage:</span>
+                            <span class="metric-value value-bad">80% (8/10)</span>
+                        </div>
+                        <div class="metric-row">
+                            <span class="metric-label">Tests Passed:</span>
+                            <span class="metric-value value-good">102/102</span>
+                        </div>
+                    </div>
+                    
+                    <div class="missing-box">
+                        <h4>Missing Coverage</h4>
+                        <ul>
+                            <li>Line 8: Negative input handling (n < 0)</li>
+                            <li>Line 10: Base case B(0) = 1</li>
+                        </ul>
+                    </div>
+                    
+                    <a href="bell_number_before/index.html" class="btn" target="_blank">View Detailed Report</a>
+                </div>
+                
+                <div class="problem-card after-card">
+                    <h3>AFTER (With Spec-Guided Tests)</h3>
+                    
+                    <div class="metric-box">
+                        <div class="metric-row">
+                            <span class="metric-label">Tests:</span>
+                            <span class="metric-value value-neutral">112 tests (102 + 10 spec-guided)</span>
+                        </div>
+                        <div class="metric-row">
+                            <span class="metric-label">Statement Coverage:</span>
+                            <span class="metric-value value-good">100% (14/14)</span>
+                        </div>
+                        <div class="metric-row">
+                            <span class="metric-label">Branch Coverage:</span>
+                            <span class="metric-value value-good">100% (10/10)</span>
+                        </div>
+                        <div class="metric-row">
+                            <span class="metric-label">Tests Passed:</span>
+                            <span class="metric-value value-good">112/112</span>
+                        </div>
+                    </div>
+                    
+                    <div class="improvement-box">
+                        <h4>Improvements Achieved</h4>
+                        <ul>
+                            <li>+17% statement coverage</li>
+                            <li>+20% branch coverage</li>
+                            <li>All missing lines now covered</li>
+                            <li>Negative input handling tested</li>
+                            <li>All base cases verified (B(0), B(1), B(2))</li>
+                            <li>Known sequence values validated</li>
+                        </ul>
+                    </div>
+                    
+                    <a href="bell_number_after/index.html" class="btn" target="_blank">View Detailed Report</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Key Insights -->
+        <div class="insights-box">
+            <h3>Key Insights</h3>
+            <ul>
+                <li><strong>Targeted Testing Works:</strong> Spec-guided tests achieved 100% coverage by systematically targeting uncovered branches</li>
+                <li><strong>Quality Over Quantity:</strong> Just 20 and 10 focused spec-guided tests completed what 102 general tests missed</li>
+                <li><strong>Specifications Reveal Gaps:</strong> Formal specifications identified critical edge cases including invalid input handling, boundary conditions, and base cases</li>
+                <li><strong>Complete Coverage Achieved:</strong> Both problems now have 100% statement and branch coverage</li>
+                <li><strong>All Tests Pass:</strong> 234 total tests (122 + 112) all passing with complete coverage</li>
+            </ul>
+        </div>
+
+        <div class="footer">
+            <p><strong>Generated:</strong> November 10, 2025</p>
+            <p><strong>Project:</strong> LLM Code Generation - Assignment 2</p>
+            <p><strong>Variant:</strong> QWEN_SCOT (Step-wise Chain of Thought)</p>
+        </div>
+    </div>
+</body>
+</html>
