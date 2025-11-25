@@ -116,6 +116,3 @@ python -m pytest Solutions/QWEN_SCOT/TestCases/test_bell_number.py \
 ```
 
 ---
-
-**Generated**: November 10, 2025  
-**Project**: LLM Code Generation - Assignment 2
